@@ -10,9 +10,13 @@ def index(request):
     if request.method == 'POST':
         command = request.POST.get('command')
         command = str(command)
-        response = subprocess.call(command, stderr=subprocess.STDOUT)
+         p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
 
-        if response == 0:
+        (output, err) = p.communicate()
+
+        p_status = p.wait()
+
+        if p.returncode == 0:
                 output = "Website is online"
         else:
                 output = "Website is offline"
