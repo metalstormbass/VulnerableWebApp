@@ -4,5 +4,5 @@ from . import views
 app_name = 'badcommand'
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:command_id>/results/', views.results, name='results'),
+    path('test', views.test, name='test'),
 ]

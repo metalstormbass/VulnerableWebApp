@@ -6,11 +6,11 @@ import subprocess
 from .models import Command
 
 
-def index(request):
+def test(request):
     if request.method == 'POST':
         command = request.POST.get('command')
         command = str(command)
-         p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+        p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
 
         (output, err) = p.communicate()
 
@@ -28,34 +28,9 @@ def index(request):
     else:
         context = {
         }
-        return render(request, 'badcommand/index.html', context )
+        return render(request, 'badcommand/test.html', context )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def results(request, command_id):
-    command = Command.objects.get(pk=1)
-    command = str(command)
-    response = subprocess.call(command, stderr=subprocess.STDOUT)
-    template = loader.get_template('badcommand/results.html')
-
-    if response == 0:
-        output = "Website is online"
-    else:
-        output = "Website is offline"
+def index(request):
     context = {
-        'output': output,
-    }
-    return HttpResponse(template.render(context, request))
+        }
+    return render(request, 'badcommand/index.html', context )

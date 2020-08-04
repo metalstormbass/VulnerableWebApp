@@ -1,0 +1,10 @@
+<h1>Is this webpage up?</h1>
+<p> Enter the linux ping command for the website you want to test.</p>
+<p> Example: ping -c google.com</p>
+<p>
+  <form action="#" method="post">
+     {% csrf_token %}
+     <input type="text" name='command'>
+     <input type="submit" value="Submit">
+  </form>
+</p>
