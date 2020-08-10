@@ -16,10 +16,10 @@ def test(request):
 
         p_status = p.wait()
 
-        if p.returncode == 0:
-                output = "Website is online"
+        if p.returncode == 1:
+                output = output
         else:
-                output = "Website is offline"
+                output = output
         context = {
                 'output': output,
             }
